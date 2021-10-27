@@ -67,7 +67,7 @@ const Main = ({ initialOrchArray }) => {
             />
           </div>
           {alert ? <Modal setAlert={setAlert}/> : null}
-          <div className="col-3 vh-100 bg-secondary bg-opacity-25">
+          <div className="col-3 vh-100 bg-secondary bg-opacity-10">
             {showOrch ?
               <Orchestration
                 orchArray={orchArray}

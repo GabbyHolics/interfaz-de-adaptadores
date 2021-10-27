@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import AdapterConfig from './AdapterConfig';
-import {  } from '../helpers/helper.js';
+import {changePropertyValue} from '../helpers/helper.js';
 import Dependencies from './Dependencies';
 import './style.css';
 
@@ -71,9 +71,7 @@ const Adapter = (props) => {
           <div className="row g-2">
             <div className="col-sm-5">
               <div className="form-floating mb-3 ">
-                <input type="text" className="form-control" defaultValue={item.id} onChange={(e) => (item, 'id', e.target.value)
-                
-                } />
+                <input type="text" className="form-control" defaultValue={item.id} onChange={(e) => changePropertyValue(item, 'id', e.target.value)} />
                 <label>ID</label>
               </div>
             </div>
@@ -84,13 +82,13 @@ const Adapter = (props) => {
             </div>
             <div className="col-sm-5">
               <div className="form-floating mb-3">
-                <input type="text" className="form-control" defaultValue={item.stepName} onChange={(e) => (item, 'stepName', e.target.value)} />
+                <input type="text" className="form-control" defaultValue={item.stepName} onChange={(e) => changePropertyValue(item, 'stepName', e.target.value)} />
                 <label>StepName</label>
               </div>
             </div>
             <div className="col-sm-5">
               <div className="form-floating mb-3">
-                <input type="text" className="form-control" readOnly value={item.mainClass} onChange={(e) => (item, 'mainClass', e.target.value)} />
+                <input type="text" className="form-control" readOnly value={item.mainClass} onChange={(e) => changePropertyValue(item, 'mainClass', e.target.value)} />
                 <label>MainClass</label>
               </div>
             </div>
