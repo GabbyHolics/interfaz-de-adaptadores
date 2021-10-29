@@ -1,55 +1,73 @@
-import React from 'react';
-import './style.css'
-const Orchestration = () => {
+import React, {Fragment} from 'react';
+import { dump } from 'js-yaml';
+import { downloadToFile } from '../helpers/helper.js';
+import '../css/style.css';
+
+const Orchestration = ({ orchArray, setOrchArray }) => {
+  
+  const exportToYaml = async (orchArray) => {
+    const yamlData = dump(orchArray);
+    const result = await downloadToFile(yamlData, 'adapter.yaml', 'text/plain');
+    if (result) {
+      setOrchArray([]);
+    }
+  };
+
+  const deleteOrchestration = () => {
+    setOrchArray([]);
+    localStorage.clear();
+    window.location.reload();
+  };
+
+  const DeleteOrExportBtn = () => (
+    <div className="row justify-content-center mt-5">
+      <div className="d-grid  col-sm-5  ">
+        <button
+          className="btn  font-weight-bold btn-exit text-white "
+          onClick={deleteOrchestration}
+        >
+          {" "}
+          Delete{" "}
+        </button>
+      </div>
+      <div className="d-grid  col-sm-5  ">
+        <button
+          className="btn btn-primary font-weight-bold"
+          onClick={() => exportToYaml(orchArray)}
+        >
+          {" "}
+          Export{" "}
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <>
-      <h2 className="h1 text-center">Orchestration</h2>
-      <div className="row container-orchestration overflow-auto mt-2">
+      <h3 className="h3 text-center mt-4">Orchestration</h3>
+      <div className="row  container-orchestration overflow-auto mt-2">
         <div className="col-12">
           <div className="row justify-content-center">
-            <div className="d-grid  col-sm-7  ">
-              <button
-                type="button"
-                className="btn btn-secondary text-white  mt-3 "
-              >
-                Plugin Info
-              </button>
-              {/* <button type="button" className="btn btn-secondary text-white  mt-3 "> Plugin Info</button>
-          <button type="button" className="btn btn-secondary text-white  mt-3 "> Plugin Info</button>
-          <button type="button" className="btn btn-secondary text-white  mt-3 "> Plugin Info</button>
-          <button type="button" className="btn btn-secondary text-white  mt-3 "> Plugin Info</button>
-          <button type="button" className="btn btn-secondary text-white  mt-3 "> Plugin Info</button>
-          <button type="button" className="btn btn-secondary text-white  mt-3 "> Plugin Info</button>
-          <button type="button" className="btn btn-secondary text-white  mt-3 "> Plugin Info</button>
-          <button type="button" className="btn btn-secondary text-white  mt-3 "> Plugin Info</button>
-          <button type="button" className="btn btn-secondary text-white  mt-3 "> Plugin Info</button>
-          <button type="button" className="btn btn-secondary text-white  mt-3 "> Plugin Info</button>
-          <button type="button" className="btn btn-secondary text-white  mt-3 "> Plugin Info</button> */}
-            </div>
-            <div className="col-sm-1">
-              <button className="btn   mt-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="25"
-                  height="25"
-                  fill="currentColor"
-                  class="bi bi-x-circle-fill text-dark"
-                  viewBox="0 0 16 16"
+            {orchArray.map((adapter, index) => (
+              <Fragment key={index}>
+                <div className="d-grid  col-sm-7"
                 >
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-                </svg>
-              </button>
-            </div>
+                  <button
+                    type="button"
+                    className="btn btn-secondary text-white  mt-3 "
+                  >
+                    {adapter.id}
+                  </button>
+                </div>
+              </Fragment>
+            ))}
           </div>
         </div>
       </div>
-      <div className="row justify-content-center">
-        <div className="d-grid  col-sm-7  ">
-          <button className="btn btn-new-pluging text-white"> Export </button>
-        </div>
-      </div>
+      {(orchArray.length > 0) && <DeleteOrExportBtn />}
     </>
   );
 };
+
 
 export default Orchestration;

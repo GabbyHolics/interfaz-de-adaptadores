@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+# Interfaz de adaptadores 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Índice
 
-## Available Scripts
+* [Descripción](#descripción)
+* [Prototipo](#prototipo)
+* [Interfaz](#interfaz)
+* [Historia de Usuario](#historia-de-usuario)
+* [Modo de usuario](#modo-de-usuario)
+* [Tecnologías](#tecnologías)
+* [Dependencias](#dependencias)
+* [Enlace](#enlace)
+ 
+# Descripción
 
-In the project directory, you can run:
+Este proyecto es nuestra propuesta de solución al reto de Equifax durante el Talent Fest Chile 2021. Está creado pensando en usuarios IT que necesiten poder visualizar, configurar y agilizar el proceso de recuperación de datos en la creación de orquestaciones.
+En primer lugar, permite agregar y configurar adaptadores/plugins a las orquestaciones que se desee crear, por lo que la interfaz es capaz de reconocer las distintas estructuras de estos plugins, originalmente en formato Yaml, adaptándose y mostrando lo que se necesite visualizar.
+Una vez la orquestación está lista, el usuario puede exportar y guardar en su disco local la información creada.
 
-### `npm start`
+## Mejoras y optimizaciones
+1. Barra buscadora de adaptadores.
+2. Panel de orquestación que visualiza los adaptadores agregados a la orquestación.
+3. Guardado de datos local. Esto permite que el usuario pueda recuperar su orquesta en caso de cierre de navegador, por ejemplo.
+4. Menú dropdown que permite reconocer los adaptadores agregados a la orquestación y asignar dependencias.
+5. Validación de ID único.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Prototipo
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+El prototipo de alta fidelidad se realizó en Figma y se diseñó pensando en una interfaz simple e intuitiva, en la que respondiéramos a las necesidades del cliente y mejoráramos aquello que nos parecía necesario para el trabajo del público objetivo.
 
-### `npm test`
+![Desktop(2)](https://user-images.githubusercontent.com/83680798/139112610-b11139d2-83e0-4099-a53f-c80fc6a1eaa7.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Interfaz
 
-### `npm run build`
+<img src= "image.gif" ></img>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Historia de Usuario
+ 
+###  1. Como usuario TI puedo visualizar los plugins y configurarlos
+   
+    CRITERIOS DE ACEPTACIÓN
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    - El usuario podrá acceder al los plugins a través de un boton inicial.
+    - Tener un filtro de búsqueda para los plugins.
+    - Permitir que la estructura de los plugins se visualice en la interfaz.
+    - Agregar y eliminar ítems de la configuracion.
+    - Guardar la configuración.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    DEFINICIÓN DE TERMINADO
 
-### `npm run eject`
+    - Se consume la data de archivos yaml y se transforma a un objeto javascript.
+    - Seccionar la interfaz en tres columnas.
+    - El botón de agregar nuevos plugins nuestra una lista con scroll y una barra de búsqueda.
+    - El formulario se adapta a la estructura de los distintos plugins.
+    - Se pueden agregar y borrar ítems de la configuración.
+    - El botón cancelar limpia la configuración actual.
+    - La data se guarda y se envía a la cadena de orquestación con el botón save.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+###  2. Puedo agregar distintos plugins a mi orquesta y configurar la data correspondiente
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+     CRITERIOS DE ACEPTACIÓN
 
-## Learn More
+    - Almacenar de manera local la configuración de los plugin añadidos a la orquesta.
+    - Si existe, cargar la data local para que el usuario pueda acceder a ella y continuar trabajando en esta orquestación si lo desea.
+    - Poder seleccionar la dependecia de cada nuevo plugin.
+    - Exportar la data en formato yaml al disco local.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    DEFINICIÓN DE TERMINADO
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    - Se puede seleccionar la dependecia de cada plugin en el dropdown "dependencies".
+    - Si hay data guardada, se visualiza en el panel de orquestación.
+    - Es posible explotar la data de la orquestación en formato YAML al disco local.
+    - Se puede seleccionar la carpeta de almacenamiento en Chrome, Opera y Edge. En los otros se descarga automáticamente.
+    - El botón delete elimina la orquesta y limpia el contenido local y visual.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Modo de Usuario 
 
-### Analyzing the Bundle Size
+### Para crear una nueva configuración: 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- El botón "+New" mostrará los adaptadores disponibles. 
+- La barra de búsqueda permitirá identificar si necesitas un adaptador en particular. 
+- Al elegir un adaptador podrás ver en la columna central su configuración con sus campos predeterminados y los que puedes modificar fácilmente en cada input. 
+- En caso de que quieras eliminar alguno, sólo debes clickear el trash can correspondiente. 
+- Recuerda que cada ID debe ser único.
 
-### Making a Progressive Web App
+### Para guardar una configuración: 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Utiliza el botón "save" al pie de la columna central.
+- Si no guardas y se cierra accidentalmente la configuración, perderás el trabajo realizado. 
 
-### Advanced Configuration
+### Para borrar una configuración: 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Utiliza el botón "Cancel" al pie de la columna central. 
 
-### Deployment
+### Para borrar una orquestación completa
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Utiliza el botón rojo "Delete" al pie de la  columna derecha. 
+- Recuerda que si borras la orquestación completa usando el botón "Delete", ya no podrás recuperarla aunque hayas guardado una configuración con "Save". 
 
-### `npm run build` fails to minify
+### Para descargar mi orquestación en formato yaml: 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Utiliza el botón "Export" al pie de la columna derecha. 
+- Si te arrepientes durante el proceso, puedes cancelar la exportación y tu contenido seguirá intacto.
+- Recuerda que las opciones de guardado presentan diferentes opciones según el navegador que utilices. 
+
+
+## Tecnologías  
+- Javascript
+- React.JS
+- Bootstrap 5
+- HTML5 
+- CSS
+
+## Dependencias
+- js-yaml
+- react-select
+
+## Enlace
+
+[The Rat Pack Solution 🐀](https://equifaxinterfacechallenge.netlify.app/)
+

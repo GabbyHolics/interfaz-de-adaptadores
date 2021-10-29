@@ -1,15 +1,19 @@
 import React from 'react';
-import './style.css';
+import '../css/style.css';
 
-const PluginButton = ({ item, showPluginForm }) => {
+const PluginButton = (props) => {
+  const { item, showPluginForm, setShowBtn } = props;
   const { name, configuration } = item;
+
   const handleShowPluginForm = () => {
-    showPluginForm(configuration)
-  }
+    showPluginForm(configuration, name);
+    setShowBtn(true);
+  };
+
   return (
     <>
       <div className="row">
-        <button type="button" className="btn btn-light adapters mt-3 " onClick={handleShowPluginForm}>
+        <button type="button" className="btn btn-light adapters mt-2 " onClick={handleShowPluginForm}>
           {name}
         </button>
       </div>

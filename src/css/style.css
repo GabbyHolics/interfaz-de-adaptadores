@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
+
+body{
+    font-family: 'Open Sans', sans-serif !important;
+}
+.adapters{
+    box-shadow: 24px 24px 64px rgba(228, 228, 228, 0.96);
+}
+
+.m-button-new{
+    margin-left:55%;
+    margin-top:10%;
+}
+
+.btn-new-pluging{
+    background: #00b4db; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #00b4db, #0083b0); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #00b4db, #0083b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.container-orchestration{
+    height: 70%;
+}
+
+.btn-primary {
+    background-color: #007298 !important;
+    border-color: #007298 !important;
+}
+
+.my-primary {
+    color: #007298 !important;
+    border-color: #007298 !important;
+}
+
+.btn-exit{
+    background: #a53c3cfa;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #a53c3cfa, #a53c3cfa);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #a53c3cfa, #a53c3cfa); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.modalBackground {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-container{
+    height: 50%;
+    border-radius: 0.5rem;
+    background-color: rgb(242, 242, 242);
+    display: flex;
+    flex-direction: column;
+    border: none;
+}
+
+.modal-content {
+    padding: 2rem 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.save-btn {
+    width: 4.7rem;
+}
+
+.plus-btn {
+    margin-top: -30% !important;
+}
+
+.new-btn {
+    width: 8rem;
+}
