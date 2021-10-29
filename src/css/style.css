@@ -53,19 +53,17 @@ body{
 }
 
 .modal-container{
-    /* width: 30%; */
     height: 50%;
     border-radius: 0.5rem;
     background-color: rgb(242, 242, 242);
     display: flex;
     flex-direction: column;
-    /* padding: rem; */
     border: none;
 }
 
 .modal-content {
-    padding: 1rem;
-    width: 50%;
+    padding: 2rem 3rem;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -81,4 +79,8 @@ body{
 
 .plus-btn {
     margin-top: -30% !important;
+}
+
+.new-btn {
+    width: 8rem;
 }

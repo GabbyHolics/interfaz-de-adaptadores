@@ -16,22 +16,27 @@ const Adapter = (props) => {
     setDependenciesList,
     showBtn,
     setShowBtn,
+    setModal
   } = props;
 
   const saveAdapter = (adapterArray) => {
     const adapterId = adapterArray[0].id;
-    const adapter = orchArray.find((adapter) => adapter.id === adapterId);
-    const lengthDependencies = dependenciesList.length;
-    if (!adapter) {
-      const newOrchArray = [...orchArray, adapterArray[0]];
-      setOrchArray(newOrchArray);
-      setDependenciesList((prevDependeciesList) => {
-        return [...prevDependeciesList, { value: String(lengthDependencies), label: adapterArray[0].id }]
-      });
-      setAdapterArray([]);
-      setShowBtn(false);
+    if (adapterId.length > 0) {
+      const adapter = orchArray.find((adapter) => adapter.id === adapterId);
+      const lengthDependencies = dependenciesList.length;
+      if (!adapter) {
+        const newOrchArray = [...orchArray, adapterArray[0]];
+        setOrchArray(newOrchArray);
+        setDependenciesList((prevDependeciesList) => {
+          return [...prevDependeciesList, { value: String(lengthDependencies), label: adapterArray[0].id }]
+        });
+        setAdapterArray([]);
+        setShowBtn(false);
+      } else {
+        setAlert(true);
+      }
     } else {
-      setAlert(true);
+      setModal(true);
     }
   };
 

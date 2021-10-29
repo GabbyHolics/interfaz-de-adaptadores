@@ -1,12 +1,11 @@
 import React from 'react';
 import '../css/style.css';
 
-const Modal = ({ setAlert }) => {
+const Modal = ({ setModal }) => {
 
   const handleClick = () => {
-    setAlert(false);
+    setModal(false);
   };
-
   return (
     <div>
       <div className="modalBackground">
@@ -14,7 +13,7 @@ const Modal = ({ setAlert }) => {
           <div className="modal-content">
             <div className="body">
               <div className="h6 text-center mt-2">
-                Plugin's ID should be unique
+                ID field can't be empty
               </div>
             </div>
             <button className="btn btn-primary mt-4 float-end" onClick={handleClick}> OK </button>
